@@ -43,3 +43,9 @@ void MainWindow::MoveProgressBar()
     ui->progressBar->setRange(0,100);
     ui->progressBar->setValue(seconds);
 }
+
+void MainWindow::LaunchInstallProcess()
+{
+    QProcess *process = new QProcess(this);
+    process->start("C:/Test");
+}

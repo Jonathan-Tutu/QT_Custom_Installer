@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QDebug>
+#include <QProcess>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +19,8 @@ public:
     ~MainWindow();
     void ElapsedTime();
     void MoveProgressBar();
+    void SelectInstall();
+    void LaunchInstallProcess();
 
 private:
     Ui::MainWindow *ui;
