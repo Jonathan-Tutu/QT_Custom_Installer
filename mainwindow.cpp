@@ -16,8 +16,6 @@ MainWindow::MainWindow(QWidget *parent)
     timer->start(1000);
 
     connect(timer, &QTimer::timeout, this, &MainWindow::ElapsedTime);
-
-
 }
 
 MainWindow::~MainWindow()
