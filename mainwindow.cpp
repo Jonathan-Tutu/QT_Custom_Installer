@@ -8,14 +8,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     //Init Variable//
     seconds = 0;
+    index = 1;
 
     ui->setupUi(this);
 
 
     timer = new QTimer(this);
-    timer->start(1000);
 
+    //Connect//
     connect(timer, &QTimer::timeout, this, &MainWindow::ElapsedTime);
+    connect(ui->btn_next, &QPushButton::clicked, this, &MainWindow::changeWindows);
+    connect(ui->btn_next_2, &QPushButton::clicked, this, &MainWindow::changeWindows);
+    connect(ui->btn_next_3, &QPushButton::clicked, this, &MainWindow::changeWindows);
+
 }
 
 MainWindow::~MainWindow()
@@ -33,7 +38,7 @@ void MainWindow::ElapsedTime()
     }
     ui->timer->setText(QString::number(minutes).rightJustified(2, '0') + ":" + QString::number(seconds).rightJustified(2,'0'));
 
-    MoveProgressBar();
+    //MoveProgressBar();
 }
 
 void MainWindow::MoveProgressBar()
@@ -44,6 +49,25 @@ void MainWindow::MoveProgressBar()
 
 void MainWindow::LaunchInstallProcess()
 {
-    QProcess *process = new QProcess(this);
-    process->start("C:/Test");
+    QProcess p;
+    p.setProgram("programs/odbcconnectorHFDSQL.exe");
+    p.start();
+}
+
+
+void MainWindow::changeWindows()
+{
+    ui->stackedWidget->setCurrentIndex(index);
+
+    if(ui->stackedWidget->currentIndex() == 2)
+    {
+        timer->start(1000);
+    }
+
+    index++;
+}
+
+void MainWindow::SelectInstall()
+{
+
 }

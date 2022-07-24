@@ -22,10 +22,13 @@ public:
     void SelectInstall();
     void LaunchInstallProcess();
 
+    void changeWindows();
+
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
 
     int seconds, minutes;
+    short index;
 };
 #endif // MAINWINDOW_H
